@@ -1,0 +1,20 @@
+<svg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
+
+
+<g transform="matrix(1 0 0 1 12 12)" >
+<g style="" >
+<g transform="matrix(1 0 0 1 0 0)" >
+<path style="stroke: none; stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" transform=" translate(-12, -12)" d="M 0 0 L 24 0 L 24 24 L 0 24 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 -0.34 -0.01)" >
+<path style="stroke: rgb(33,33,33); stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" transform=" translate(-11.66, -11.99)" d="M 12 3 C 12.132 3 12.263 3 12.393 3 C 9.74215394770645 5.463164869522874 9.22803449851774 9.467848568261614 11.170732993282808 12.520730571525002 C 13.113431488047876 15.57361257478839 16.958922900315937 16.804062140252377 20.313000000000002 15.446000000000002 C 18.580299916542327 19.615129524558654 14.026814346075492 21.85530086076914 9.66663214155997 20.683677322602087 C 5.30644993704445 19.512053784435036 2.4890877986988116 15.291263688085156 3.0794423391348893 10.815174760422142 C 3.669796879570967 6.33908583275913 7.4851479109619135 2.9930889763211628 11.999999999999991 2.991999999999999 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 5 -6)" >
+<path style="stroke: rgb(33,33,33); stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" transform=" translate(-17, -6)" d="M 17 4 C 17 5.1045694996615865 17.895430500338414 6 19 6 C 17.895430500338414 6 17 6.8954305003384135 17 8 C 17 6.8954305003384135 16.104569499661586 6 15 6 C 16.104569499661586 6 17 5.1045694996615865 17 4" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 8 -1)" >
+<path style="stroke: rgb(33,33,33); stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" transform=" translate(-20, -11)" d="M 19 11 L 21 11 M 20 10 L 20 12" stroke-linecap="round" />
+</g>
+</g>
+</g>
+</svg>

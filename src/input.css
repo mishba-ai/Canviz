@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS */
+/* dark-light mode */
+
+.dark {
+  --dot-bg: #000;
+  --dot-color: #fff;
+  --nav-bg-color: #000;
+  --border-color: rgb(15, 23, 42);
+}
+
+body {
+  --dot-bg: #fff;
+  --dot-color: #000;
+  --dot-size: 1px;
+  --dot-space: 22px;
+  --nav-bg-color: #fff;
+  --border-color: rgb(213, 213, 220);
+  background: linear-gradient(
+        90deg,
+        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center / var(--dot-space) var(--dot-space),
+    linear-gradient(
+        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center / var(--dot-space) var(--dot-space),
+    var(--dot-color);
+
+}
+

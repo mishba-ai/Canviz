@@ -1,0 +1,79 @@
+<svg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
+
+
+<g transform="matrix(0.42 0 0 0.42 12 12)" >
+<g style="" >
+<g transform="matrix(1 0 0 1 0 0)" >
+<linearGradient id="SVGID_6vKtMpCRaBNvS1kHgM_Ayb_1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.03 0 0 1 -24.21 -24)" x1="23.5" y1="7" x2="23.5" y2="41">
+<stop offset="0%" style="stop-color:rgb(255,184,130);stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:rgb(229,111,20);stop-opacity: 1"/>
+</linearGradient>
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_6vKtMpCRaBNvS1kHgM_Ayb_1); fill-rule: nonzero; opacity: 1;" x="-17" y="-17" rx="3" ry="3" width="34" height="34" />
+</g>
+<g transform="matrix(1 0 0 1 0 0)" >
+<linearGradient id="SVGID_6vKtMpCRaBNvS1kHgM_Aya_2" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.03 0 0 1 -24.21 -24)" x1="7" y1="24" x2="40" y2="24">
+<stop offset="0%" style="stop-color:rgb(255,177,117);stop-opacity: 0"/>
+<stop offset="39.2%" style="stop-color:rgb(254,176,116);stop-opacity: 0.009"/>
+<stop offset="53.300000000000004%" style="stop-color:rgb(253,173,112);stop-opacity: 0.044"/>
+<stop offset="63.3%" style="stop-color:rgb(249,168,106);stop-opacity: 0.103"/>
+<stop offset="71.5%" style="stop-color:rgb(244,161,96);stop-opacity: 0.188"/>
+<stop offset="78.4%" style="stop-color:rgb(238,151,84);stop-opacity: 0.299"/>
+<stop offset="84.6%" style="stop-color:rgb(231,139,69);stop-opacity: 0.435"/>
+<stop offset="90.2%" style="stop-color:rgb(221,125,51);stop-opacity: 0.598"/>
+<stop offset="95.19999999999999%" style="stop-color:rgb(211,109,30);stop-opacity: 0.781"/>
+<stop offset="99.7%" style="stop-color:rgb(200,91,7);stop-opacity: 0.987"/>
+<stop offset="100%" style="stop-color:rgb(199,90,6);stop-opacity: 1"/>
+</linearGradient>
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_6vKtMpCRaBNvS1kHgM_Aya_2); fill-rule: nonzero; opacity: 0.9;" x="-17" y="-17" rx="3" ry="3" width="34" height="34" />
+</g>
+<g transform="matrix(0 -1 1 0 0 0)" >
+<linearGradient id="SVGID_6vKtMpCRaBNvS1kHgM_Ayc_3" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.03 0 0 1 43.79 -92)" x1="-59" y1="92" x2="-26" y2="92">
+<stop offset="0%" style="stop-color:rgb(255,177,117);stop-opacity: 0"/>
+<stop offset="39.2%" style="stop-color:rgb(254,176,116);stop-opacity: 0.009"/>
+<stop offset="53.300000000000004%" style="stop-color:rgb(253,173,112);stop-opacity: 0.044"/>
+<stop offset="63.3%" style="stop-color:rgb(249,168,106);stop-opacity: 0.103"/>
+<stop offset="71.5%" style="stop-color:rgb(244,161,96);stop-opacity: 0.188"/>
+<stop offset="78.4%" style="stop-color:rgb(238,151,84);stop-opacity: 0.299"/>
+<stop offset="84.6%" style="stop-color:rgb(231,139,69);stop-opacity: 0.435"/>
+<stop offset="90.2%" style="stop-color:rgb(221,125,51);stop-opacity: 0.598"/>
+<stop offset="95.19999999999999%" style="stop-color:rgb(211,109,30);stop-opacity: 0.781"/>
+<stop offset="99.7%" style="stop-color:rgb(200,91,7);stop-opacity: 0.987"/>
+<stop offset="100%" style="stop-color:rgb(199,90,6);stop-opacity: 1"/>
+</linearGradient>
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_6vKtMpCRaBNvS1kHgM_Ayc_3); fill-rule: nonzero; opacity: 0.9;" x="-17" y="-17" rx="3" ry="3" width="34" height="34" />
+</g>
+<g transform="matrix(-1 0 0 -1 0 0)" >
+<linearGradient id="SVGID_6vKtMpCRaBNvS1kHgM_Ayd_4" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.03 0 0 1 111.79 -24)" x1="-125" y1="24" x2="-92" y2="24">
+<stop offset="0%" style="stop-color:rgb(255,177,117);stop-opacity: 0"/>
+<stop offset="39.2%" style="stop-color:rgb(254,176,116);stop-opacity: 0.009"/>
+<stop offset="53.300000000000004%" style="stop-color:rgb(253,173,112);stop-opacity: 0.044"/>
+<stop offset="63.3%" style="stop-color:rgb(249,168,106);stop-opacity: 0.103"/>
+<stop offset="71.5%" style="stop-color:rgb(244,161,96);stop-opacity: 0.188"/>
+<stop offset="78.4%" style="stop-color:rgb(238,151,84);stop-opacity: 0.299"/>
+<stop offset="84.6%" style="stop-color:rgb(231,139,69);stop-opacity: 0.435"/>
+<stop offset="90.2%" style="stop-color:rgb(221,125,51);stop-opacity: 0.598"/>
+<stop offset="95.19999999999999%" style="stop-color:rgb(211,109,30);stop-opacity: 0.781"/>
+<stop offset="99.7%" style="stop-color:rgb(200,91,7);stop-opacity: 0.987"/>
+<stop offset="100%" style="stop-color:rgb(199,90,6);stop-opacity: 1"/>
+</linearGradient>
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_6vKtMpCRaBNvS1kHgM_Ayd_4); fill-rule: nonzero; opacity: 0.9;" x="-17" y="-17" rx="3" ry="3" width="34" height="34" />
+</g>
+<g transform="matrix(0 1 -1 0 0 0)" >
+<linearGradient id="SVGID_6vKtMpCRaBNvS1kHgM_Aye_5" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.03 0 0 1 43.79 44)" x1="-59" y1="-44" x2="-26" y2="-44">
+<stop offset="0%" style="stop-color:rgb(255,177,117);stop-opacity: 0"/>
+<stop offset="39.2%" style="stop-color:rgb(254,176,116);stop-opacity: 0.009"/>
+<stop offset="53.300000000000004%" style="stop-color:rgb(253,173,112);stop-opacity: 0.044"/>
+<stop offset="63.3%" style="stop-color:rgb(249,168,106);stop-opacity: 0.103"/>
+<stop offset="71.5%" style="stop-color:rgb(244,161,96);stop-opacity: 0.188"/>
+<stop offset="78.4%" style="stop-color:rgb(238,151,84);stop-opacity: 0.299"/>
+<stop offset="84.6%" style="stop-color:rgb(231,139,69);stop-opacity: 0.435"/>
+<stop offset="90.2%" style="stop-color:rgb(221,125,51);stop-opacity: 0.598"/>
+<stop offset="95.19999999999999%" style="stop-color:rgb(211,109,30);stop-opacity: 0.781"/>
+<stop offset="99.7%" style="stop-color:rgb(200,91,7);stop-opacity: 0.987"/>
+<stop offset="100%" style="stop-color:rgb(199,90,6);stop-opacity: 1"/>
+</linearGradient>
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_6vKtMpCRaBNvS1kHgM_Aye_5); fill-rule: nonzero; opacity: 0.9;" x="-17" y="-17" rx="3" ry="3" width="34" height="34" />
+</g>
+</g>
+</g>
+</svg>
