@@ -70,3 +70,35 @@ function drawShapes(x, y) {
 
   context.stroke();
 }
+
+
+
+
+let canvaBox = $(".board");//board is the class of canvas
+let board,context;
+
+let startPos;
+let currPos;
+let savedPos;
+let strikes = [];
+let undos = [];
+let zoom = 1;
+
+let paints,shapesOpen,bgListOpen = false;
+let choosenShape = null;
+let tool = "pen";
+
+// creating a canvas
+function createCanva(){
+  //board is the canvas
+  board = document.createElement('canvas');
+  board.height = canvaBox.clientHeight; //height of canvas
+  board.width = canvaBox.clientWidth; //width of canvas
+  board.id = "board";//id of canvas
+  context = board.getContext('2d');//context is used to draw shapes on canvas
+  canvaBox.appendChild(board);//appending canvas to the board
+}
+createCanva();
+
+//Menu and action buttons ************************
+
