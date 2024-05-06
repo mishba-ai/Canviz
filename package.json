@@ -1,4 +1,8 @@
 {
+  "name":"canviz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
   "devDependencies": {
     "tailwindcss": "^3.4.1"
   },

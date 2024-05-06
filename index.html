@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./output.css" rel="stylesheet" />
+    <link href="./src/output.css" rel="stylesheet" />
     <title>Canviz</title>
   </head>
   <body class="w-full">
@@ -12,17 +12,17 @@
       class="w-full overflow-hidden bg-nav p-4 px-6 border-b flex justify-between border-bnav h-12"
     >
       <ul class="flex gap-x-8">
-        <li><button><img src="../assets/icons/undo.svg" alt=""></button></li>
-        <li><button><img src="../assets/icons/redo.svg" alt=""></button></li>
-        <li><button><img src="../assets/icons/save.svg" alt=""></button></li>
-        <li><button><img src="../assets/icons/clear.svg" alt=""></button></li>
-        <li><button><img src="../assets/icons/delete.svg" alt=""></button></li>
-        <li><button><img src="../assets/icons/newboard.svg" alt=""></button></li>
+        <li><button><img src="/assets/icons/undo.svg" alt=""></button></li>
+        <li><button><img src="/assets/icons/redo.svg" alt=""></button></li>
+        <li><button><img src="/assets/icons/save.svg" alt=""></button></li>
+        <li><button><img src="/assets/icons/clear.svg" alt=""></button></li>
+        <li><button><img src="/assets/icons/delete.svg" alt=""></button></li>
+        <li><button><img src="/assets/icons/newboard.svg" alt=""></button></li>
       </ul>
       <ul class="flex gap-x-4">
         <li>
           <button class="" onclick="mode()" id="darkmode-btn">
-            <img src="../assets/icons/darkmode.svg" alt="" />
+            <img src="/assets/icons/darkmode.svg" alt="" />
           </button>
         </li>
         <li class=""><img src="" class="rounded-full h-4 w-4" alt="img" /></li>
@@ -39,19 +39,19 @@
           <div
             class="h-[2.4rem] hover:bg-slate-300 w-12 m-0 p-0 flex justify-center rounded-tl-2xl items-center bg-slate-200"
           >
-            <img src="../assets/icons/pointer.svg" alt="" class="h-8 w-8" />
+            <img src="/assets/icons/pointer.svg" alt="" class="h-8 w-8" />
           </div>
           <div
             class="h-[2.4rem] hover:bg-slate-300 w-12 m-0 p-0 flex justify-center rounded-bl-2xl items-center bg-slate-200"
           >
-            <img src="../assets/icons/handtool.svg" alt="" class="h-10 w-10" />
+            <img src="/assets/icons/handtool.svg" alt="" class="h-10 w-10" />
           </div>
         </div>
         <!-- pencil -->
         <div class="flex border-r w-56">
           <div>
             <img
-              src="../assets/icons/pencil.svg"
+              src="/assets/icons/pencil.svg"
               alt=""
               class="hue-rotate-30 rotate-[135deg] h-20 mt-2 w-24"
             />
@@ -59,18 +59,18 @@
           <!-- shapes -->
           <div class="flex flex-wrap w-24 mt-1">
             <img
-              src="../assets/shapes/circle.svg"
+              src="/assets/shapes/circle.svg"
               alt=""
               class="h-10 w-12"
             /><img
-              src="../assets/shapes/square.svg"
+              src="/assets/shapes/square.svg"
               alt=""
               class="h-10 w-12"
             /><img
-              src="../assets/shapes/triangle.svg"
+              src="/assets/shapes/triangle.svg"
               alt=""
               class="h-10 w-12"
-            /><img src="../assets/shapes/arrow.svg" alt="" class="h-9 w-12" />
+            /><img src="/assets/shapes/arrow.svg" alt="" class="h-9 w-12" />
           </div>
         </div>
         <!--  -->
@@ -78,26 +78,28 @@
           class="flex justify-center items-center mx-2 gap-x-2 w-56 border-r"
         >
           <div class="bg-slate-200 w-12 h-12 flex justify-center items-center">
-            <img src="../assets/icons/text.svg" alt="" class="w-10 h-10" />
+            <img src="/assets/icons/text.svg" alt="" class="w-10 h-10" />
           </div>
           <div class="flex justify-center bg-slate-200 w-12 h-12 items-center">
-            <img src="../assets/icons/stamp.svg" alt="" class="w-10 h-10" />
+            <img src="/assets/icons/stamp.svg" alt="" class="w-10 h-10" />
           </div>
           <div><img src="" alt="" /></div>
           <div><img src="" alt="" /></div>
         </div>
         <!--  -->
         <div class="flex flex-wrap space-x-0 rounded-r-2xl">
-          <img src="../assets/images/camera.png" alt="" class="h-14 w-12 " />
+          <img src="/assets/images/camera.png" alt="" class="h-14 w-12 " />
 
-          <img src="../assets/images/code.png" alt="" class="h-14 w-14 " />
+          <img src="/assets/images/code.png" alt="" class="h-14 w-14 " />
 
-          <img src="../assets/images/code1.png" alt="" class="h-12 w-12" />
+          <img src="/assets/images/code1.png" alt="" class="h-12 w-12" />
 
-          <img src="../assets/images/gd.png" alt="" class="h-14 w-14 -mt-5" />
+          <img src="/assets/images/gd.png" alt="" class="h-14 w-14 -mt-5" />
         </div>
       </div>
     </div>
   </body>
-  <script src="darkmode.js"></script>
+  <script src="./src/main.js"></script>
+  <script src="./src/darkmode.js"></script>
+
 </html>
