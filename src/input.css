@@ -4,7 +4,6 @@
 
 /* Custom CSS */
 /* dark-light mode */
-
 .dark {
   --dot-bg: #000;
   --dot-color: #fff;
@@ -33,4 +32,3 @@ body {
     var(--dot-color);
 
 }
-
