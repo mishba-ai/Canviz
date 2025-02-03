@@ -4,20 +4,24 @@
 
 /* Custom CSS */
 /* dark-light mode */
-.dark {
+html[data-theme="dark"] {
   --dot-bg: #000;
   --dot-color: #fff;
   --nav-bg-color: #000;
   --border-color: rgb(15, 23, 42);
 }
 
-body {
+html[data-theme="light"] {
   --dot-bg: #fff;
   --dot-color: #000;
-  --dot-size: 1px;
-  --dot-space: 22px;
   --nav-bg-color: #fff;
   --border-color: rgb(213, 213, 220);
+}
+
+
+body {
+  --dot-size: 1px;
+  --dot-space: 22px;
   background: linear-gradient(
         90deg,
         var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
@@ -30,5 +34,4 @@ body {
       )
       center / var(--dot-space) var(--dot-space),
     var(--dot-color);
-
 }

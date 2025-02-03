@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
   <meta charset="UTF-8" />
@@ -9,9 +9,12 @@
 </head>
 
 <body class="w-full">
+  <div id="app"></div>
+  <script type="module" src="./src/main.js"></script>
+
   <!-- header -->
   <nav class="w-full overflow-hidden bg-nav p-4 px-6 border-b flex justify-between border-bnav h-12">
-    <!-- <p class="text-red-600">fdfsd</p> -->
+    <!-- <p class="text-red-600">fdfsd</p>  -->
     <ul class="flex gap-x-8">
       <li><button><img src="/assets/icons/undo.svg" alt=""></button></li>
       <li><button><img src="/assets/icons/redo.svg" alt=""></button></li>
@@ -47,16 +50,19 @@
       <!-- pencil -->
       <div class="flex border-r w-56">
         <div>
-          <img src="/assets/icons/pencil.svg" alt="" class="hue-rotate-30 rotate-[135deg] h-20 mt-2 w-24" />
+          <img src="/assets/icons/pencil.svg" alt="" class="hue-rotate-30 rotate-[135deg] h-20 mt-2 w-24 option active tool" id="brush"/>
         </div>
         <!-- shapes -->
-        <div class="flex flex-wrap w-24 mt-1">
-          <img src="/assets/shapes/circle.svg" alt="" class="h-10 w-12" /><img src="/assets/shapes/square.svg" alt=""
-            class="h-10 w-12" /><img src="/assets/shapes/triangle.svg" alt="" class="h-10 w-12" /><img
-            src="/assets/shapes/arrow.svg" alt="" class="h-9 w-12" />
+        <div class="">
+          <ul class="flex flex-wrap w-24 mt-1 options">
+            <li class="option tool" id="circ"><img src="/assets/shapes/circle.svg" alt="" class="h-10 w-12" /></li>
+            <li class="option tool" id="square"><img src="/assets/shapes/square.svg" alt="" class="h-10 w-12" /></li>
+            <li class="option tool" id="triangle"><img src="/assets/shapes/triangle.svg" alt="" class="h-10 w-12" />
+            <li class="option tool" id="arrow"><img src="/assets/shapes/arrow.svg" alt="" class="h-9 w-12" /></li>
+          </ul>
         </div>
       </div>
-      <!--  -->
+
       <div class="flex justify-center items-center mx-2 gap-x-2 w-56 border-r">
         <div class="bg-slate-200 w-12 h-12 flex justify-center items-center">
           <img src="/assets/icons/text.svg" alt="" class="w-10 h-10" />
@@ -67,7 +73,7 @@
         <div><img src="" alt="" /></div>
         <div><img src="" alt="" /></div>
       </div>
-      <!--  --> 
+
       <div class="flex flex-wrap space-x-0 rounded-r-2xl">
         <img src="/assets/images/camera.png" alt="" class="h-14 w-12 " />
 
@@ -79,8 +85,9 @@
       </div>
     </div>
   </div>
+  <div id="app"></div>
+
   <script type="module" src="./src/main.js"></script>
-  <script type="module" src="./src/utils/darkmode.js"></script>
-  
 </body>
-</html> 
+
+</html>

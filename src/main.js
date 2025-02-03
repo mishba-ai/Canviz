@@ -1,6 +1,7 @@
-import { createApp } from './app';
+// main.js
+import { createApp } from './app.js';
 
-// Create the main app instance
+// Create the app
 const app = createApp();
 
 // Mount the app to the DOM
