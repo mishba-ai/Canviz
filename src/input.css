@@ -5,20 +5,25 @@
 /* Custom CSS */
 /* dark-light mode */
 html[data-theme="dark"] {
-  --dot-bg: #000;
-  --dot-color: #fff;
-  --nav-bg-color: #000;
-  --border-color: rgb(15, 23, 42);
+  /* --dot-bg: #000; */
+  /* --dot-color: #fff; */
+  --bg-color: #000;
+  /* --nav-bg-color: #000; */
+  /* --border-color: rgb(15, 23, 42); */
 }
 
 html[data-theme="light"] {
-  --dot-bg: #fff;
-  --dot-color: #000;
-  --nav-bg-color: #fff;
-  --border-color: rgb(213, 213, 220);
+  /* --dot-bg: #fff; */
+  /* --dot-color: #000; */
+  --bg-color: #fff;
+  /* --nav-bg-color: #fff; */
+  /* --border-color: rgb(213, 213, 220); */
 }
 
 body {
+  background: var(--bg-color);
+  /* 
+  // grid page
   --dot-size: 1px;
   --dot-space: 22px;
   background: linear-gradient(
@@ -32,5 +37,6 @@ body {
         transparent 1%
       )
       center / var(--dot-space) var(--dot-space),
-    var(--dot-color);
+    var(--dot-color); */
+
 }
