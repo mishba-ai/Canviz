@@ -18,7 +18,6 @@ html[data-theme="light"] {
   --border-color: rgb(213, 213, 220);
 }
 
-
 body {
   --dot-size: 1px;
   --dot-space: 22px;

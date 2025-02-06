@@ -1,7 +1,1 @@
-<svg id='Up_Arrow_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
-
-
-<g transform="matrix(0.91 0 0 0.91 12 12)" >
-<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" translate(-12, -12)" d="M 12 1 L 8 5 L 11 5 L 11 23 L 13 23 L 13 5 L 16 5 L 12 1 z" stroke-linecap="round" />
-</g>
-</svg>
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path style="stroke:none;stroke-width:1;stroke-dasharray:none;stroke-linecap:butt;stroke-dashoffset:0;stroke-linejoin:miter;stroke-miterlimit:4;fill:#000;fill-rule:nonzero;opacity:1" transform="matrix(.42 0 0 .42 1.5 1.496)" d="M25 1.016 14.309 11.28a.993.993 0 0 0-.286.961 1 1 0 0 0 1.668.477L24 4.746V48c-.004.36.184.695.496.879.313.18.695.18 1.008 0 .312-.184.5-.52.496-.879V4.746l8.309 7.973a1 1 0 0 0 1.668-.477.993.993 0 0 0-.286-.96Z"/></svg>
