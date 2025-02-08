@@ -14,7 +14,7 @@ export class ShapeTools {
         //create shape tools dropdown
         this.dropdown = new Dropdown({
             buttonSVG: squareicon,
-            buttonClasses: 'px-4 py-2 bg-blue-500 text-white rounded',
+            buttonClasses: 'bg-gray-300 text-white rounded',
             items: SHAPES,
             onSelect: onSelectShape
 

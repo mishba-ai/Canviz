@@ -5,7 +5,7 @@ export function createCanvas(parent) {
 
     const canvas = document.createElement('canvas');
     canvas.id = 'main-canvas';
-    canvas.classList.add('absolute', 'inset-0', 'w-full', 'h-full', 'bg-red-400');
+    canvas.classList.add('absolute', 'inset-0', 'w-full', 'h-full', 'bg-[#1c1c1c]');
 
     canvasContainer.appendChild(canvas);
     parent.appendChild(canvasContainer);
@@ -13,7 +13,6 @@ export function createCanvas(parent) {
     const setCanvasSize = () => {
         canvas.width = canvasContainer.offsetWidth;
         canvas.height = canvasContainer.offsetHeight;
-
     };
 
     setCanvasSize();

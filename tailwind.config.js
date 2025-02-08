@@ -9,7 +9,9 @@ module.exports = {
     extend: {
       colors: {
         nav: "var(--nav-bg-color)",
-        bnav: "var(--border-color)"
+        bnav: "var(--border-color)",
+        border_color:"",
+        canvas_bg:"",
       }
     },
   },

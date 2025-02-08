@@ -1,5 +1,7 @@
 import { BaseComponent } from "../BaseComponent.js";
 
+const arr_icon = "../../../assets/icons/d_arrow.svg"
+
 export class Dropdown extends BaseComponent {
     initialize(config) {
         this.items = config.items || [];
@@ -13,10 +15,10 @@ export class Dropdown extends BaseComponent {
 
         this.template = `
     <div class='relative inline-block'>
-        <button class="${config.buttonClasses}  flex items-center gap-2 px-4 py-2">
-           ${this.buttonSVG ? `<img src="${this.buttonSVG}" alt="icon" />` : this.buttonText}
-        </button>
-        <div class ="absolute ${this.getPositionClasses()} hidden min-w-[200px] bg-[#ffd60a] border rounded shadow-lg z-50 mt-1">
+        <button class="${config.buttonClasses} flex items-center gap-1 mx-2 my-1"> 
+        <img src="${arr_icon}" alt="icon" />
+        </button> 
+        <div class ="absolute ${this.getPositionClasses()} hidden min-w-[190px] bg-[#1c1c1c] border border-zinc-700 rounded-xl z-50 mt-1 text-white">
            ${this.generateMenuItems()}
        </div>
     </div>
@@ -26,9 +28,12 @@ export class Dropdown extends BaseComponent {
 
     generateMenuItems() {
         return this.items.map(item => `
-           <div class="px-4 py-2 hover:bg-gray-100 cursor-pointer dropdown-item" data-value="${item.value}" >
-             ${item.label}
+        <div class="flex">
+           <div class="px-3 py-1 hover:bg-zinc-800 cursor-pointer dropdown-item" data-value="${item.value}" >
+             ${item.label} 
             </div>
+            <div class=""></div>
+        </div>
            `).join('');
     }
 
@@ -64,9 +69,7 @@ export class Dropdown extends BaseComponent {
             if (!this.element.contains(e.target) && this.isOpen) {
                 menu.classList.add('hidden');
                 this.isOpen = false;
-
             }
         });
     }
-
 }

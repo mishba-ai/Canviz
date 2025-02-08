@@ -10,7 +10,7 @@ export class Toolbar {
   render(container) {
     const toolbarElement = document.createElement('div');
     toolbarElement.id = 'toolbar';
-    toolbarElement.className = 'flex space-x-4 p-4 bg-[#fff] absolute bottom-3 max-w-[650px] h-12  left-[50%] border-gray-200 border translate-x-[-50%] rounded-xl z-10 w-full left-1/2 ';
+    toolbarElement.className = 'flex space-x-4  bg-zinc-800 absolute bottom-3 max-w-[650px] h-12  left-[50%] border border-zinc-700 translate-x-[-50%] rounded-xl z-10 w-full left-1/2 ';
 
     toolbarElement.appendChild(this.shapeTools.render());
     toolbarElement.appendChild(this.moveTools.render());

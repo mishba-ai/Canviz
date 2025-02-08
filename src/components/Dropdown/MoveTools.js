@@ -1,10 +1,11 @@
 import { Dropdown } from "./Dropdown.js";
 
+const pen = "../../../assets/icons/pen.svg"
 export class MoveTools {
     constructor(onSelectTool) {
         this.dropdown = new Dropdown({
-            buttonText: 'Move',
-            buttonClasses: 'px-4 py-2 bg-gray-500 text-white rounded',
+            buttonSVG: pen,
+            buttonClasses: 'bg-gray-100 text-white rounded',
             items: [
                 { value: 'select', label: 'Select' },
                 { value: 'drag', label: 'Drag' },
