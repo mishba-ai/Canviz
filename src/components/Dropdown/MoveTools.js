@@ -5,7 +5,7 @@ export class MoveTools {
     constructor(onSelectTool) {
         this.dropdown = new Dropdown({
             buttonSVG: pen,
-            buttonClasses: 'bg-gray-100 text-white rounded',
+            buttonClasses: 'bg-gray-700 text-white rounded',
             items: [
                 { value: 'select', label: 'Select' },
                 { value: 'drag', label: 'Drag' },
