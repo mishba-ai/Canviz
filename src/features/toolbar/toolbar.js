@@ -6,7 +6,7 @@ import { ImageTool } from './ImageTool.js'
 import { AITool } from './AITool.js';
 
 export class Toolbar {
-  constructor(onSelectShape, onSelectTool, onSelectText, onSelectMove, onSelectImage ,onSelectAI) {
+  constructor(onSelectShape, onSelectTool, onSelectText, onSelectMove, onSelectImage, onSelectAI) {
     this.moveTools = new MoveTools(onSelectMove);
     this.shapeTools = new ShapeTools(onSelectShape);
     this.CreationTools = new CreationTools(onSelectTool);
