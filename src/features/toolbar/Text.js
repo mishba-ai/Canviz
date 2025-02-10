@@ -1,4 +1,3 @@
-// Text.js
 const text_icon = "../../assets/icons/text.svg";
 
 export class TextTool {
@@ -11,7 +10,7 @@ export class TextTool {
     render() {
         const textElement = document.createElement('div');
         textElement.id = 'text-tool';
-        textElement.className = 'flex items-center justify-center w-10 h-10  hover:bg-zinc-700 rounded-lg cursor-pointer transition-colors ';
+        textElement.className = 'flex items-center justify-center w-8 h-8  hover:bg-zinc-700 rounded-lg cursor-pointer transition-colors ';
 
         const icon = document.createElement('img');
         icon.src = text_icon;
