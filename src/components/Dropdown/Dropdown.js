@@ -2,11 +2,11 @@ import { BaseComponent } from "../BaseComponent.js";
 const arr_icon = "../../../assets/icons/d_arrow.svg";
 
 export class Dropdown extends BaseComponent {
-    initialize(config) {
+    initialize(config) { 
         this.items = config.items || [];
         this.position = config.position || 'bottom-right';
         this.onSelect = config.onSelect || (() => { });
-        this.isOpen = false;
+        this.isOpen = false; 
         this.buttonSVG = config.buttonSVG || '';
         this.buttonText = config.buttonText || '';
         this.selectedIcon = config.buttonSVG || ''; // Track currently selected icon
