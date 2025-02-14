@@ -9,7 +9,7 @@ export class TextSelector {
         this.contextMenu = null;
         
         this.setupEventListeners();
-        this.createContextMenu();
+        this.createContextMenu(); 
     }
 
     setupEventListeners() {
@@ -163,6 +163,3 @@ export class TextSelector {
     }
 }
 
-// Usage
-const canvas = document.querySelector('canvas');
-const textSelector = new TextSelector(canvas);

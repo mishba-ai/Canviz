@@ -17,8 +17,8 @@ export class Dropdown extends BaseComponent {
                         ${this.buttonSVG ? `<img src="${this.buttonSVG}" alt="icon" class="w-5 h-5  selected-icon" />` : ''}
                     </div>
                     <span class="text-sm text-white">${this.buttonText}</span>
-                    <div class="hover:bg-[#363636] w-3 h-8 flex items-center justify-center ">
-                       <img src="${arr_icon}" alt="dropdown" class="w-2  h-2 mt-0.5 cursor-pointer hover:bg-[#363636] arrow-icon" />
+                    <div class="hover:bg-[#363636] w-3 h-8 arrow-icon flex items-center cursor-pointer justify-center ">
+                       <img src="${arr_icon}" alt="dropdown" class="w-2  h-2 mt-0.5  hover:bg-[#363636] " />
                     </div>
                 </div>
                 
