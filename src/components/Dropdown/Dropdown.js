@@ -2,20 +2,23 @@ import { BaseComponent } from "../BaseComponent.js";
 const arr_icon = "../../../assets/icons/d_arrow.svg";
 
 export class Dropdown extends BaseComponent {
-    initialize(config) { 
+    initialize(config) {
         this.items = config.items || [];
         this.position = config.position || 'bottom-right';
         this.onSelect = config.onSelect || (() => { });
-        this.isOpen = false; 
+        this.isOpen = false;
         this.buttonSVG = config.buttonSVG || '';
         this.buttonText = config.buttonText || '';
-        this.selectedIcon = config.buttonSVG || ''; // Track currently selected icon
+        this.selectedIcon = config.buttonSVG || ''; // Track currently selected icon  
+        this.isIconActive = false;
+        this.id = config.id || `dropdown-${Math.random()}`
+
         this.template = `
-            <div class='relative inline-flex items-center gap-1'>
-                <div class="flex items-center rounded-md bg-[#4cc9f0] mx-3  transition-colors">
-                    <div class="cursor-pointer hover:bg-[#363636] w-8 h-8 flex rounded-md items-center justify-center bg-red-400">
+            <div class='relative inline-flex items-center data-dropdown-id="${this.id}"'>
+                <div class="flex items-center rounded-md bg-transparent mx-3  transition-colors">
+                    <button class="cursor-pointer hover:bg-[#363636] w-8 h-8 flex rounded-md items-center justify-center bg-transparent icon-container">
                         ${this.buttonSVG ? `<img src="${this.buttonSVG}" alt="icon" class="w-5 h-5  selected-icon" />` : ''}
-                    </div>
+                    </button>
                     <span class="text-sm text-white">${this.buttonText}</span>
                     <div class="hover:bg-[#363636] w-3 h-8 arrow-icon flex items-center cursor-pointer justify-center ">
                        <img src="${arr_icon}" alt="dropdown" class="w-2  h-2 mt-0.5  hover:bg-[#363636] " />
@@ -56,6 +59,20 @@ export class Dropdown extends BaseComponent {
         const arrowIcon = this.element.querySelector('.arrow-icon');
         const menu = this.element.querySelector('.dropdown-menu');
         const selectedIconElement = this.element.querySelector('.selected-icon');
+        const iconContainer = this.element.querySelector('.icon-container');
+
+        //handle icon container click
+        iconContainer.addEventListener('click', (e) => {
+            e.stopPropagation();
+            // Dispatch custom event to deactivate other dropdowns
+            const event = new CustomEvent('dropdown-activated', {
+                bubbles: true,
+                detail: { dropdownId: this.id }
+            });
+            this.element.dispatchEvent(event);
+
+            this.setActiveState(!this.isIconActive);
+        });
 
         // Only open dropdown when arrow icon is clicked
         arrowIcon.addEventListener('click', (e) => {
@@ -77,16 +94,45 @@ export class Dropdown extends BaseComponent {
 
                 this.onSelect({
                     value: selectedValue,
-                    icon: selectedIcon
+                    icon: selectedIcon, // Pass the selected icon to the onSelect callback
+
                 });
 
                 this.closeMenu();
             });
         });
 
-        document.addEventListener('click', () => this.closeMenu());
+        // Listen for dropdown-activated events
+        document.addEventListener('dropdown-activated', (e) => {
+            if (e.detail.dropdownId !== this.id) {
+                this.setActiveState(false);
+            }
+        });
+
+        // / Listen for tool activation events
+        document.addEventListener('tool-activated', (e) => {
+            if (this.isIconActive) {
+                this.setActiveState(false);
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', () => {
+            this.closeMenu();
+        });
     }
 
+
+    setActiveState(active) {
+        this.isIconActive = active;
+        const iconContainer = this.element.querySelector('.icon-container');
+
+        if (active) {
+            iconContainer.classList.add('bg-[#363636]');
+        } else {
+            iconContainer.classList.remove('bg-transparent');
+        }
+    }
     closeMenu() {
         if (this.isOpen) {
             this.isOpen = false;

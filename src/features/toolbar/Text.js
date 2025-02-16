@@ -1,16 +1,19 @@
 const text_icon = "../../assets/icons/text.svg";
 
 export class TextTool {
-    constructor() {
+    constructor() { 
         this.isActive = false;
         this.currentTextBox = null;
         this.canvasClickHandler = null;
+        this.id = 'text-tool';
+        
     }
 
     render() {
         const textElement = document.createElement('div');
-        textElement.id = 'text-tool';
+        textElement.id = this.id;
         textElement.className = 'flex items-center justify-center w-8 h-8  hover:bg-zinc-700 rounded-lg cursor-pointer transition-colors ';
+        textElement.dataset.toolId = this.id
 
         const icon = document.createElement('img');
         icon.src = text_icon;
@@ -19,8 +22,24 @@ export class TextTool {
 
         textElement.appendChild(icon);
         
+         // Listen for dropdown activation events
+        document.addEventListener('dropdown-activated', (e) => {
+            if (this.isActive) {
+                this.deactivate(textElement);
+            }
+        });
+
         // Toggle text mode on button click
-        textElement.addEventListener('click', () => {
+        textElement.addEventListener('click', (e) => {
+            e.stopPropagation();
+            
+            // Dispatch event to deactivate other tools
+            const event = new CustomEvent('tool-activated', {
+                bubbles: true,
+                detail: { toolId: this.id }
+            });
+            textElement.dispatchEvent(event);
+
             this.toggleTextMode(textElement);
         });
 
@@ -36,6 +55,18 @@ export class TextTool {
         } else {
             this.disableTextMode();
         }
+    }
+
+    activate(buttonElement){
+        this.isActive = true;
+        buttonElement.classList.add('bg-zinc-700');
+        this.enableTextMode();
+    }
+
+    deactivate(buttonElement) {
+        this.isActive = false;
+        buttonElement.classList.remove('bg-zinc-700');
+        this.disableTextMode();
     }
 
     enableTextMode() {

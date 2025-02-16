@@ -818,19 +818,14 @@ video {
   background-color: rgb(28 28 28 / var(--tw-bg-opacity, 1));
 }
 
-.bg-\[\#4cc9f0\] {
+.bg-\[\#363636\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(76 201 240 / var(--tw-bg-opacity, 1));
+  background-color: rgb(54 54 54 / var(--tw-bg-opacity, 1));
 }
 
 .bg-gray-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(55 65 81 / var(--tw-bg-opacity, 1));
-}
-
-.bg-red-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 113 113 / var(--tw-bg-opacity, 1));
 }
 
 .bg-transparent {
@@ -845,6 +840,32 @@ video {
 .bg-zinc-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(39 39 42 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[\#2\] {
+  background-color: #2;
+}
+
+.bg-\[\#2A2A2A\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(42 42 42 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[\#f\] {
+  background-color: #f;
+}
+
+.bg-\[\#fff\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[\#3\] {
+  background-color: #3;
+}
+
+.bg-\[\#36\] {
+  background-color: #36;
 }
 
 .p-1 {
