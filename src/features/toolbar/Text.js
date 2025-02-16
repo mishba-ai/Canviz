@@ -31,7 +31,6 @@ export class TextTool {
         this.isActive = !this.isActive;
         buttonElement.classList.toggle('bg-zinc-700', this.isActive);
         
-        
         if (this.isActive) {
             this.enableTextMode();
         } else {
@@ -133,10 +132,12 @@ export class TextTool {
         });
 
         textBox.addEventListener('blur', () => {
-            if (textBox.textContent.trim() === '') {
-                this.removeTextBox();
-            } else {
-                this.finalizeTextBox();
+            if (document.body.contains(textBox)) {
+                if (textBox.textContent.trim() === '') {
+                    this.removeTextBox();
+                } else {
+                    this.finalizeTextBox();
+                }
             }
         });
 

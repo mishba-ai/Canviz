@@ -5,6 +5,7 @@ const s_icon = '../../../assets/shapes/square.svg'
 const t_icon = '../../../assets/shapes/triangle.svg'
 const a_icon = '../../../assets/shapes/arrow.svg'
 const r_icon = '../../../assets/shapes/rectangle.svg'
+const camera_icon = '../../../assets/icons/camera.svg'
 
 const SHAPES = [
     { label: 'Circle', value: 'circle', icon: c_icon, shortcut: 'C' },
@@ -12,6 +13,7 @@ const SHAPES = [
     { label: 'Triangle', value: 'triangle', icon: t_icon, shortcut: 'T' },
     { label: 'Arrow', value: 'arrow', icon: a_icon, shortcut: 'A' },
     { label: 'Rectangle', value: 'rectangle', icon: r_icon, shortcut: 'R' },
+    {label: 'Camera',value:'camera',icon:camera_icon,shortcut:'I'}
 ];
 const squareicon = "../../../assets/shapes/square.svg"
 export class ShapeTools {
@@ -44,6 +46,11 @@ export class ShapeTools {
                 label: 'Rectangle',
                 action: this.handleSecletShape.bind(this),
             },
+            'Camera': {
+                icon: camera_icon,
+                label: 'Camera',
+                action: this.handleSecletShape.bind(this),
+            }
 
         };
         //create shape tools dropdown
@@ -115,6 +122,10 @@ export class ShapeTools {
                 //
                 this.initializeRectangleTool();
                 break;
+            case 'Camera':
+                //
+                this.initializeCameraTool();
+                break;
         }
 
     }
@@ -137,6 +148,10 @@ export class ShapeTools {
 
     initializeRectangleTool() {
         //
+    }
+
+    initializeCameraTool(){
+
     }
 
     setupKeyboardShortcuts() {
@@ -164,6 +179,9 @@ export class ShapeTools {
                 case 'r':
                     //
                     this.handleToolSelection({ value: 'Rectangle', icon: r_icon });
+                    break;
+                case 'i':
+                    this.handleToolSelection({value:'Camera',icon:camera_icon});
                     break;
             }
         })
