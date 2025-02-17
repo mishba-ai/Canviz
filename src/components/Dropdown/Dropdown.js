@@ -2,10 +2,11 @@ import { BaseComponent } from "../BaseComponent.js";
 const arr_icon = "../../../assets/icons/d_arrow.svg";
 
 export class Dropdown extends BaseComponent {
- constructor(config){
-    super(config);
-    this.id = config.id || `dropdown-${Math.random().toString(36).substr(2, 9)}`;
- }
+
+    constructor(config) {
+        super(config);
+        this.id = config.id || `dropdown-${Math.random().toString(36).substr(2, 9)}`;
+    }
 
     initialize(config) {
         this.items = config.items || [];
@@ -19,7 +20,7 @@ export class Dropdown extends BaseComponent {
 
         this.template = `
             <div class='relative inline-flex items-center ' data-dropdown-id="${this.id}">
-                <div class="flex items-center rounded-md bg-transparent mx-3  transition-colors">
+                <div class="flex items-center rounded-md bg-transparent  transition-colors">
                     <button class="cursor-pointer hover:bg-[#363636] w-8 h-8 flex rounded-md items-center justify-center bg-transparent icon-container">
                         ${this.buttonSVG ? `<img src="${this.buttonSVG}" alt="icon" class="w-5 h-5  selected-icon" />` : ''}
                     </button>
@@ -68,10 +69,13 @@ export class Dropdown extends BaseComponent {
         //handle icon container click
         iconContainer.addEventListener('click', (e) => {
             e.stopPropagation();
-            this.setActiveState(!this.isIconActive);
+            // Only set active if it's currently inactive
+            if (!this.isIconActive) {
+                this.setActiveState(true);
+            }
         });
 
-        // Only open dropdown when arrow icon is clicked
+        // Only open dropdown when arrow icon is clicked 
         arrowIcon.addEventListener('click', (e) => {
             e.stopPropagation();
             this.isOpen = !this.isOpen;
@@ -123,7 +127,7 @@ export class Dropdown extends BaseComponent {
     setActiveState(active) {
         this.isIconActive = active;
         const iconContainer = this.element.querySelector('.icon-container');
-    
+
         if (active) {
             iconContainer.classList.add('bg-zinc-700');
             // Emit dropdown activation event if becoming active

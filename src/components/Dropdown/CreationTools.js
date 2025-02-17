@@ -5,7 +5,7 @@ export class CreationTools {
     constructor(onSelectTool) {
         this.currentTool = 'pen'; //default tool
         this.tools = {
-            'Pen': {
+            'Pen': { 
                 icon: pen_i,
                 label: 'Pen',
                 action: this.handleSelectTool.bind(this)

@@ -49,6 +49,8 @@ export class MoveTools {
         this.setupKeyboardShortcuts();
     }
 
+    
+
     handleToolSelection(selected) {
         const tool = selected.value;
         const icon = selected.icon;
@@ -122,6 +124,18 @@ export class MoveTools {
     }
 
     render() {
-        return this.dropdown.render();
-    }
+        const element = this.dropdown.render();
+        // After rendering, initialize the default selection again
+        requestAnimationFrame(() => {
+            const defaultSelection = {
+                value: 'Move',
+                icon: move_cursor,
+                label: 'Select'
+            };
+            
+            this.handleToolSelection(defaultSelection);
+            this.dropdown.setActiveState(true);
+        });
+
+        return element;    }
 }
