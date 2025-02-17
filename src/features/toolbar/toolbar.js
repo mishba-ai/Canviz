@@ -6,6 +6,8 @@ import { ImageTool } from './ImageTool.js'
 import { AITool } from './AITool.js';
 import { ToolManager } from '../../utils/ToolManager.js';
 
+const move_cursor = '../../../assets/icons/cursor_arr.svg'
+
 export class Toolbar {
   constructor(onSelectShape, onSelectTool, onSelectText, onSelectMove, onSelectImage, onSelectAI) {
     this.toolmanager = new ToolManager();
@@ -51,8 +53,18 @@ export class Toolbar {
 
       if (container) {
           container.appendChild(toolbarElement);
-      }
+      
 
+      // Set move tools as active by default
+      setTimeout(() => {
+        this.moveTools.handleToolSelection({
+            value: 'Move',
+            icon: move_cursor,
+            label: 'Select'
+        });
+        this.moveTools.dropdown.setActiveState(true);
+    }, 0);
+      }
       return toolbarElement;
   }
 }
