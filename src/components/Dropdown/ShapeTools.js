@@ -55,6 +55,7 @@ export class ShapeTools {
         };
         //create shape tools dropdown
         this.dropdown = new Dropdown({
+            id:'shape-tools',
             buttonSVG: squareicon,
             buttonClasses: 'bg-gray-700 text-white rounded',
             items: SHAPES,

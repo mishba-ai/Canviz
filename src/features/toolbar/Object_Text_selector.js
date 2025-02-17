@@ -6,8 +6,8 @@ export class TextSelector {
         this.isSelecting = false;
         this.startX = 0;
         this.startY = 0;
-        this.contextMenu = null;
-        
+        this.contextMenu = null; 
+
         this.setupEventListeners();
         this.createContextMenu(); 
     }

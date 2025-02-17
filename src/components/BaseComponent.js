@@ -9,9 +9,10 @@ export class BaseComponent {
     }
 
     initialize(config) {
-
+    
     }
 
+    
     render() {
         const wrapper = document.createElement('div');
         wrapper.innerHTML = this.template;
@@ -20,19 +21,20 @@ export class BaseComponent {
         return this.element;
     }
 
-    setupEventListeners(){
+    setupEventListeners() {
 
     }
 
-   updateState(newState) {
-    this.state = {
-        ...this.state,
-        ...newState
-    };
-    this.onStateUpdate();
-   }
+    updateState(newState) {
+        this.state = {
+            ...this.state,
+            ...newState
+        };
+        this.onStateUpdate();
+    }
 
-   onStateUpdate() {
+    onStateUpdate() {
 
-   }
+    }
+
 }

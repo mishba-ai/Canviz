@@ -842,30 +842,14 @@ video {
   background-color: rgb(39 39 42 / var(--tw-bg-opacity, 1));
 }
 
-.bg-\[\#2\] {
-  background-color: #2;
-}
-
-.bg-\[\#2A2A2A\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(42 42 42 / var(--tw-bg-opacity, 1));
-}
-
-.bg-\[\#f\] {
-  background-color: #f;
-}
-
 .bg-\[\#fff\] {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
-.bg-\[\#3\] {
-  background-color: #3;
-}
-
-.bg-\[\#36\] {
-  background-color: #36;
+.bg-\[\#2A2A2A\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(42 42 42 / var(--tw-bg-opacity, 1));
 }
 
 .p-1 {

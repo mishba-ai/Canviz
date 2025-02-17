@@ -6,7 +6,7 @@ export class TextTool {
         this.currentTextBox = null;
         this.canvasClickHandler = null;
         this.id = 'text-tool';
-        
+         
     }
 
     render() {

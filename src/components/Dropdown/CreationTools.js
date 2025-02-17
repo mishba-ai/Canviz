@@ -18,6 +18,7 @@ export class CreationTools {
         };
 
         this.dropdown = new Dropdown({
+            id:'creation-tools',
             buttonSVG: pen_i,
             buttonClasses: 'bg-gray-700 text-white rounded',
             items: [
@@ -85,6 +86,7 @@ export class CreationTools {
     initializePencilTool() {
         //
     }
+
 
     setupKeyboardShortcuts() {
         document.addEventListener('keydown', (e) => {

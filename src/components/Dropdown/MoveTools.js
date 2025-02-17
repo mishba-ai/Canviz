@@ -20,6 +20,7 @@ export class MoveTools {
         };
 
         this.dropdown = new Dropdown({
+            id :'move-tools',
             buttonSVG: move_cursor, // Default icon
             buttonText: '',
             items: [

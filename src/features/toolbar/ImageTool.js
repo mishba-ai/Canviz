@@ -6,12 +6,14 @@ export class ImageTool {
         this.canvasClickHandler = null;
         this.onImageUpload = onImageUpload;
         this.currentImage = null;
+        this.id = 'image-tool';
     }
 
     render() {
         const Image_Tool = document.createElement('div');
-        Image_Tool.id = 'image-tool';
+        Image_Tool.id = this.id;
         Image_Tool.className = 'flex items-center justify-center w-8 h-8 hover:bg-zinc-700 rounded-lg cursor-pointer transition-colors ';
+        Image_Tool.dataset.toolId = this.id
 
         const icon = document.createElement('img');
         icon.src = image_icon;
@@ -19,10 +21,26 @@ export class ImageTool {
         icon.className = 'w-5 h-5 ';
 
         Image_Tool.appendChild(icon);
+ // Listen for dropdown activation events
+ document.addEventListener('dropdown-activated', (e) => {
+    if (this.isActive) {
+        this.deactivate(textElement);
+    }
+});
+        // Toggle text mode on button click
+        Image_Tool.addEventListener('click', (e) => {
+            e.stopPropagation();
+            
+            // Dispatch event to deactivate other tools
+            const event = new CustomEvent('tool-activated', {
+                bubbles: true,
+                detail: { toolId: this.id }
+            });
+            Image_Tool.dispatchEvent(event);
 
-        Image_Tool.addEventListener('click', () => {
             this.toggleImageMode(Image_Tool);
         });
+
 
         return Image_Tool;
     }
@@ -36,6 +54,17 @@ export class ImageTool {
         } else {
             this.disableImageMode();
         }
+    }
+    activate(buttonElement){
+        this.isActive = true;
+        buttonElement.classList.add('bg-zinc-700');
+        this.enableImageMode();
+    }
+
+    deactivate(buttonElement) {
+        this.isActive = false;
+        buttonElement.classList.remove('bg-zinc-700');
+        this.disableImageMode();
     }
 
     enableImageMode() {

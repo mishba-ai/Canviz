@@ -2,6 +2,11 @@ import { BaseComponent } from "../BaseComponent.js";
 const arr_icon = "../../../assets/icons/d_arrow.svg";
 
 export class Dropdown extends BaseComponent {
+ constructor(config){
+    super(config);
+    this.id = config.id || `dropdown-${Math.random().toString(36).substr(2, 9)}`;
+ }
+
     initialize(config) {
         this.items = config.items || [];
         this.position = config.position || 'bottom-right';
@@ -11,10 +16,9 @@ export class Dropdown extends BaseComponent {
         this.buttonText = config.buttonText || '';
         this.selectedIcon = config.buttonSVG || ''; // Track currently selected icon  
         this.isIconActive = false;
-        this.id = config.id || `dropdown-${Math.random()}`
 
         this.template = `
-            <div class='relative inline-flex items-center data-dropdown-id="${this.id}"'>
+            <div class='relative inline-flex items-center ' data-dropdown-id="${this.id}">
                 <div class="flex items-center rounded-md bg-transparent mx-3  transition-colors">
                     <button class="cursor-pointer hover:bg-[#363636] w-8 h-8 flex rounded-md items-center justify-center bg-transparent icon-container">
                         ${this.buttonSVG ? `<img src="${this.buttonSVG}" alt="icon" class="w-5 h-5  selected-icon" />` : ''}
@@ -64,13 +68,6 @@ export class Dropdown extends BaseComponent {
         //handle icon container click
         iconContainer.addEventListener('click', (e) => {
             e.stopPropagation();
-            // Dispatch custom event to deactivate other dropdowns
-            const event = new CustomEvent('dropdown-activated', {
-                bubbles: true,
-                detail: { dropdownId: this.id }
-            });
-            this.element.dispatchEvent(event);
-
             this.setActiveState(!this.isIconActive);
         });
 
@@ -126,11 +123,19 @@ export class Dropdown extends BaseComponent {
     setActiveState(active) {
         this.isIconActive = active;
         const iconContainer = this.element.querySelector('.icon-container');
-
+    
         if (active) {
-            iconContainer.classList.add('bg-[#363636]');
+            iconContainer.classList.add('bg-zinc-700');
+            // Emit dropdown activation event if becoming active
+            const event = new CustomEvent('dropdown-activated', {
+                bubbles: true,
+                detail: { dropdownId: this.id }
+            });
+            this.element.dispatchEvent(event);
         } else {
-            iconContainer.classList.remove('bg-transparent');
+            iconContainer.classList.remove('bg-zinc-700');
+            iconContainer.classList.add('bg-transparent');
+            this.closeMenu() //close menu when deactivate
         }
     }
     closeMenu() {
