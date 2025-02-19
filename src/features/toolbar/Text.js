@@ -1,12 +1,12 @@
 const text_icon = "../../assets/icons/text.svg";
 
 export class TextTool {
-    constructor() { 
+    constructor() {
         this.isActive = false;
         this.currentTextBox = null;
+        this.textBoxes = new Set(); // Store multiple text boxes
         this.canvasClickHandler = null;
         this.id = 'text-tool';
-         
     }
 
     render() {
@@ -21,8 +21,8 @@ export class TextTool {
         icon.className = 'w-5 h-5 ';
 
         textElement.appendChild(icon);
-        
-         // Listen for dropdown activation events
+
+        // Listen for dropdown activation events
         document.addEventListener('dropdown-activated', (e) => {
             if (this.isActive) {
                 this.deactivate(textElement);
@@ -32,7 +32,7 @@ export class TextTool {
         // Toggle text mode on button click
         textElement.addEventListener('click', (e) => {
             e.stopPropagation();
-            
+
             // Dispatch event to deactivate other tools
             const event = new CustomEvent('tool-activated', {
                 bubbles: true,
@@ -40,27 +40,20 @@ export class TextTool {
             });
             textElement.dispatchEvent(event);
 
-            this.toggleTextMode(textElement);
+            // Only activate if not already active
+            if (!this.isActive) {
+                this.activate(textElement);
+            }
         });
 
         return textElement;
     }
 
-    toggleTextMode(buttonElement) {
-        this.isActive = !this.isActive;
-        buttonElement.classList.toggle('bg-zinc-700', this.isActive);
-        
-        if (this.isActive) {
-            this.enableTextMode();
-        } else {
-            this.disableTextMode();
-        }
-    }
-
-    activate(buttonElement){
+    activate(buttonElement) {
         this.isActive = true;
         buttonElement.classList.add('bg-zinc-700');
         this.enableTextMode();
+        console.log('text tool activated ')
     }
 
     deactivate(buttonElement) {
@@ -95,9 +88,9 @@ export class TextTool {
         }
 
         // Finalize any existing text box
-        if (this.currentTextBox) {
-            this.finalizeTextBox();
-        }
+        // if (this.currentTextBox) {
+        //     this.finalizeTextBox();
+        // }
     }
 
     handleCanvasClick(event) {
@@ -107,17 +100,16 @@ export class TextTool {
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
 
-        // Only create new text box if we don't have one active
-        if (!this.currentTextBox) {
+        // Create a new text box at the clicked position
             this.createTextInput(x, y);
-        }
+        
     }
 
     createTextInput(x, y) {
         // Remove any existing text box first
-        if (this.currentTextBox) {
-            this.finalizeTextBox();
-        }
+        // if (this.currentTextBox) {
+        //     this.finalizeTextBox();
+        // }
 
         const textBox = document.createElement('div');
         textBox.contentEditable = true;
@@ -127,10 +119,10 @@ export class TextTool {
         textBox.style.transform = 'translate(-50%, -50%)';
         textBox.style.whiteSpace = 'pre-wrap';
         textBox.style.fontSize = '16px';
-        
+
         // Add placeholder
         textBox.dataset.placeholder = 'Type something...';
-        
+
         // Add placeholder styles if not already added
         if (!document.querySelector('#text-tool-styles')) {
             const style = document.createElement('style');
@@ -154,10 +146,10 @@ export class TextTool {
 
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
-                this.finalizeTextBox();
+                this.finalizeTextBox(this.currentTextBox);
             }
             if (e.key === 'Escape') {
-                this.removeTextBox();
+                this.removeTextBox(this.currentTextBox);
             }
             e.stopPropagation();
         });
@@ -165,47 +157,55 @@ export class TextTool {
         textBox.addEventListener('blur', () => {
             if (document.body.contains(textBox)) {
                 if (textBox.textContent.trim() === '') {
-                    this.removeTextBox();
-                } else {
-                    this.finalizeTextBox();
-                }
+                    this.removeTextBox(this.currentTextBox);
+                } 
+                // else {
+                //     this.finalizeTextBox(this.currentTextBox);
+                // }
             }
         });
 
         // Add to DOM
         const canvasParent = document.querySelector('canvas').parentElement;
         canvasParent.appendChild(textBox);
-        this.currentTextBox = textBox;
+        // this.currentTextBox = textBox;
+        this.currentTextBox = textBox;  // Set the current text box
+
+        this.textBoxes.add(textBox); // Add to set of text boxes
+
         textBox.focus();
     }
 
-    finalizeTextBox() {
-        if (!this.currentTextBox) return;
+    finalizeTextBox(textBox) {
+        if (!textBox) return;
 
-        const text = this.currentTextBox.textContent.trim();
-        if (text) { 
+        const text = textBox.textContent.trim();
+        if (text) {
             const position = {
-                x: parseFloat(this.currentTextBox.style.left),
-                y: parseFloat(this.currentTextBox.style.top)
+                x: parseFloat(textBox.style.left),
+                y: parseFloat(textBox.style.top)
             };
 
             const canvas = document.querySelector('canvas');
             const ctx = canvas.getContext('2d');
-            const style = window.getComputedStyle(this.currentTextBox);
-            
+            const style = window.getComputedStyle(textBox);
+
             ctx.font = `${style.fontSize} ${style.fontFamily}`;
             ctx.fillStyle = 'white';
             ctx.textAlign = 'center';
             ctx.fillText(text, position.x, position.y);
         }
 
-        this.removeTextBox();
+        this.removeTextBox(textBox);
     }
 
-    removeTextBox() {
-        if (this.currentTextBox) {
-            this.currentTextBox.remove();
-            this.currentTextBox = null;
+    removeTextBox(textBox) {
+        if (textBox) { 
+            textBox.remove();
+            this.textBoxes.delete(textBox);
+            if (this.currentTextBox === textBox) {
+                this.currentTextBox = null;
+            }
         }
     }
 }

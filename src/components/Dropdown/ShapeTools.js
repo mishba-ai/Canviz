@@ -23,33 +23,33 @@ export class ShapeTools {
             'Circle': {
                 icon: c_icon,
                 label: 'Circle',
-                action: this.handleSecletShape.bind(this),
+                action: this.handleSelectShape.bind(this),
             },
 
             'Square': {
                 icon: s_icon,
                 label: 'Square',
-                action: this.handleSecletShape.bind(this),
+                action: this.handleSelectShape.bind(this),
             },
             'Triangle': {
                 icon: t_icon,
                 label: 'Triangle',
-                action: this.handleSecletShape.bind(this),
+                action: this.handleSelectShape.bind(this),
             },
             'Arrow': {
                 icon: a_icon,
                 label: 'Arrow',
-                action: this.handleSecletShape.bind(this),
+                action: this.handleSelectShape.bind(this),
             },
             'Rectangle': {
                 icon: r_icon,
                 label: 'Rectangle',
-                action: this.handleSecletShape.bind(this),
+                action: this.handleSelectShape.bind(this),
             },
             'Camera': {
                 icon: camera_icon,
                 label: 'Camera',
-                action: this.handleSecletShape.bind(this),
+                action: this.handleSelectShape.bind(this),
             }
 
         };
@@ -59,7 +59,7 @@ export class ShapeTools {
             buttonSVG: squareicon,
             buttonClasses: 'bg-gray-700 text-white rounded',
             items: SHAPES,
-            onSelect: (value) => {
+            onSelect: (selected) => {
                 this.handleToolSelection(selected);
                 if (onSelectShape) {
                     onSelectShape(selected)
@@ -95,7 +95,7 @@ export class ShapeTools {
 
 
     // This method activates the selected tool and deactivates all others.
-    handleSecletShape(tool) {
+    handleSelectShape(tool) {
         //deactivate all tools first 
         object.keys(this.tools).forEach(toolKey => {
 

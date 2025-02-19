@@ -15,7 +15,7 @@ export class AITool {
 
         const icon = document.createElement('img');
         icon.src = AI_icon;
-        icon.alt = 'Text Tool';
+        icon.alt = 'ai Tool';
         icon.className = 'w-5 h-5 ';
 
         AI_Tool.appendChild(icon);
@@ -26,7 +26,7 @@ export class AITool {
             }
         });
 
-        // Toggle text mode on button click
+        // Toggle AI mode on button click
         AI_Tool.addEventListener('click', (e) => {
             e.stopPropagation();
 
