@@ -2,7 +2,7 @@
 
 export class ToolManager {
     constructor() {
-        this.activeDropdown=null;
+        this.activeDropdown = null;
         this.activeTool = null;
         this.tools = new Map();
         this.setupEventListeners();
@@ -11,11 +11,11 @@ export class ToolManager {
     registerTool(toolId, tool) {
         this.tools.set(toolId, tool);
     }
-    
-    setupEventListeners(){
+
+    setupEventListeners() {
         //listen for dropdown activation
-        document.addEventListener('dropdown-activated',(e) => {
-            const {dropdownId} = e.detail;
+        document.addEventListener('dropdown-activated', (e) => {
+            const { dropdownId } = e.detail;
             // Deactivate previous dropdown if different
             if (this.activeDropdown && this.activeDropdown !== dropdownId) {
                 const prevDropdown = this.tools.get(this.activeDropdown);
@@ -23,7 +23,7 @@ export class ToolManager {
                     prevDropdown.dropdown.setActiveState(false);
                 }
             }
-            
+
             // Deactivate active tool if exists
             if (this.activeTool) {
                 const tool = this.tools.get(this.activeTool);
@@ -32,14 +32,14 @@ export class ToolManager {
                     tool.deactivate(toolElement);
                 }
             }
-            
+
             this.activeDropdown = dropdownId;
         });
 
         // Listen for tool activation
         document.addEventListener('tool-activated', (e) => {
             const { toolId } = e.detail;
-            
+
             // Deactivate active dropdown if exists
             if (this.activeDropdown) {
                 const dropdown = this.tools.get(this.activeDropdown);
@@ -48,7 +48,7 @@ export class ToolManager {
                 }
                 this.activeDropdown = null;
             }
-            
+
             // Deactivate previous tool if different
             if (this.activeTool && this.activeTool !== toolId) {
                 const prevTool = this.tools.get(this.activeTool);
@@ -57,9 +57,9 @@ export class ToolManager {
                     prevTool.deactivate(toolElement);
                 }
             }
-            
+
             this.activeTool = toolId;
         });
     }
 }
-        
+

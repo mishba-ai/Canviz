@@ -10,6 +10,29 @@ export class TextSelector {
 
         this.setupEventListeners();
         this.createContextMenu(); 
+
+        this.cleanup = () => {
+            // Remove all event listeners
+            this.canvas.removeEventListener('mousedown', this.handleMouseDown.bind(this));
+            this.canvas.removeEventListener('mousemove', this.handleMouseMove.bind(this));
+            this.canvas.removeEventListener('mouseup', this.handleMouseUp.bind(this));
+            this.canvas.removeEventListener('contextmenu', this.handleContextMenu.bind(this));
+
+            // Remove context menu
+            if (this.contextMenu && this.contextMenu.parentNode) {
+                this.contextMenu.parentNode.removeChild(this.contextMenu);
+            }
+
+            // Clear any selections
+            if (this.ctx) {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            }
+
+            this.selectedText = null;
+            this.isSelecting = false;
+        };
+
+    
     }
 
     setupEventListeners() {

@@ -1,9 +1,9 @@
 import { CreationTools } from '../../components/Dropdown/CreationTools.js';
 import { ShapeTools } from '../../components/Dropdown/ShapeTools.js';
-import { TextTool } from "../../features/toolbar/Text.js"
+import { TextTool } from "./tools/Text.js"
 import { MoveTools } from '../../components/Dropdown/MoveTools.js';
-import { ImageTool } from './ImageTool.js'
-import { AITool } from './AITool.js';
+import { ImageTool } from './tools/ImageTool.js'
+import { AITool } from './tools/AITool.js';
 import { ToolManager } from '../../utils/ToolManager.js';
 
 const move_cursor = '../../../assets/icons/cursor_arr.svg';

@@ -45,7 +45,6 @@ export class TextTool {
                 this.activate(textElement);
             }
         });
-
         return textElement;
     }
 

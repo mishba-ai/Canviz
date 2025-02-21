@@ -4,11 +4,11 @@ export function createCanvas(parent) {
     canvasContainer.classList.add('flex-1', 'relative');
 
     const canvas = document.createElement('canvas');
-    canvas.id = 'main-canvas';
+    canvas.id = 'main-canvas'; 
     canvas.classList.add('absolute', 'inset-0', 'w-full', 'h-full', 'bg-[#1c1c1c]');
 
     canvasContainer.appendChild(canvas);
-    parent.appendChild(canvasContainer);
+    parent.appendChild(canvasContainer); 
 
     const setCanvasSize = () => {
         canvas.width = canvasContainer.offsetWidth;
