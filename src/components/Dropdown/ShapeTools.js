@@ -1,5 +1,5 @@
 import { Dropdown } from "./Dropdown.js";
-
+import { ExportImage } from "../../features/toolbar/tools/ExportImage.js";
 const c_icon = '../../../assets/shapes/circle.svg'
 const s_icon = '../../../assets/shapes/square.svg'
 const t_icon = '../../../assets/shapes/triangle.svg'
@@ -13,7 +13,7 @@ const SHAPES = [
     { label: 'Triangle', value: 'triangle', icon: t_icon, shortcut: 'T' },
     { label: 'Arrow', value: 'arrow', icon: a_icon, shortcut: 'A' },
     { label: 'Rectangle', value: 'rectangle', icon: r_icon, shortcut: 'R' },
-    {label: 'Camera',value:'camera',icon:camera_icon,shortcut:'I'}
+    { label: 'Export Image', value: 'Export Image', icon: camera_icon, shortcut: 'I' }
 ];
 const squareicon = "../../../assets/shapes/square.svg"
 export class ShapeTools {
@@ -25,7 +25,6 @@ export class ShapeTools {
                 label: 'Circle',
                 action: this.handleSelectShape.bind(this),
             },
-
             'Square': {
                 icon: s_icon,
                 label: 'Square',
@@ -46,16 +45,18 @@ export class ShapeTools {
                 label: 'Rectangle',
                 action: this.handleSelectShape.bind(this),
             },
-            'Camera': {
+            'Export Image': {
                 icon: camera_icon,
-                label: 'Camera',
+                label: 'Export Image',
                 action: this.handleSelectShape.bind(this),
             }
 
         };
+
+        this.exportImage = null;
         //create shape tools dropdown
         this.dropdown = new Dropdown({
-            id:'shape-tools',
+            id: 'shape-tools',
             buttonSVG: squareicon,
             buttonClasses: 'bg-gray-700 text-white rounded',
             items: SHAPES,
@@ -75,6 +76,8 @@ export class ShapeTools {
         const tool = selected.value;
         const icon = selected.icon;
 
+        console.log('Tool selected:', tool); // Log the selected tool
+
         //update current tool
         this.currentShape = tool;
 
@@ -89,15 +92,15 @@ export class ShapeTools {
             this.tools[tool].action(tool);
         }
 
-        console.log('Selected shape tool:', tool);
 
     }
 
-
     // This method activates the selected tool and deactivates all others.
     handleSelectShape(tool) {
+        console.log('Tool action triggered:', tool); // Log the tool action
+
         //deactivate all tools first 
-        object.keys(this.tools).forEach(toolKey => {
+        Object.keys(this.tools).forEach(toolKey => {
 
         });
 
@@ -123,8 +126,9 @@ export class ShapeTools {
                 //
                 this.initializeRectangleTool();
                 break;
-            case 'Camera':
-                //
+            case 'Export Image':
+                console.log('Initializing Camera Tool in switch case'); // Debug log
+
                 this.initializeCameraTool();
                 break;
         }
@@ -151,8 +155,18 @@ export class ShapeTools {
         //
     }
 
-    initializeCameraTool(){
-
+    initializeCameraTool() {
+        console.log('initializeCameraTool called'); // Debug log
+        
+        // Create new instance if it doesn't exist
+        if (!this.exportImage) {
+            console.log('Creating new ExportImage instance'); // Debug log
+            this.exportImage = new ExportImage();
+        }
+        
+        // Always call render
+        console.log('Calling render on ExportImage'); // Debug log
+        this.exportImage.render();
     }
 
     setupKeyboardShortcuts() {
@@ -182,7 +196,7 @@ export class ShapeTools {
                     this.handleToolSelection({ value: 'Rectangle', icon: r_icon });
                     break;
                 case 'i':
-                    this.handleToolSelection({value:'Camera',icon:camera_icon});
+                    this.handleToolSelection({ value: 'Export Image', icon: camera_icon });
                     break;
             }
         })
