@@ -1,5 +1,6 @@
 const text_icon = "../../assets/icons/text.svg";
 
+
 export class TextTool {
     constructor() {
         this.isActive = false;
