@@ -12,7 +12,6 @@ export class BaseComponent {
     
     }
 
-    
     render() {
         const wrapper = document.createElement('div');
         wrapper.innerHTML = this.template;

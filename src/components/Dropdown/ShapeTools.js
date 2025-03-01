@@ -8,11 +8,12 @@ const r_icon = '../../../assets/shapes/rectangle.svg'
 const camera_icon = '../../../assets/icons/camera.svg'
 
 const SHAPES = [
+    { label: 'Square', value: 'square', icon: s_icon, shortcut: 'S' },
+    { label: 'Rectangle', value: 'rectangle', icon: r_icon, shortcut: 'R' },
     { label: 'Circle', value: 'circle', icon: c_icon, shortcut: 'C' },
     { label: 'Square', value: 'square', icon: s_icon, shortcut: 'S' },
     { label: 'Triangle', value: 'triangle', icon: t_icon, shortcut: 'T' },
     { label: 'Arrow', value: 'arrow', icon: a_icon, shortcut: 'A' },
-    { label: 'Rectangle', value: 'rectangle', icon: r_icon, shortcut: 'R' },
     { label: 'Export Image', value: 'Export Image', icon: camera_icon, shortcut: 'I' }
 ];
 const squareicon = "../../../assets/shapes/square.svg"

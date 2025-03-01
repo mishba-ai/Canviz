@@ -25,7 +25,7 @@ export class CreationTools {
                 { value: 'pen', label: 'Pen', icon: pen_i, shortcut: '(P)' },
                 { value: 'pencil', label: 'Pencil', icon: pencil_i, shortcut: '(shift+P)' },
             ],
-            onSelect: (value) => {
+            onSelect: (selected) => {
                 this.handleToolSelection(selected);
                 if (onSelectTool) {
                     onSelectTool(selected)

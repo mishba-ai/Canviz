@@ -5,7 +5,7 @@ export class Dropdown extends BaseComponent {
 
     constructor(config) {
         super(config);
-        this.id = config.id || `dropdown-${Math.random().toString(36).substr(2, 9)}`;
+        this.id = config.id || `dropdown-${Math.random().toString(36).substring(2, 9)}`;
     }
 
     initialize(config) {
@@ -61,7 +61,7 @@ export class Dropdown extends BaseComponent {
     }
 
     setupEventListeners() {
-        const arrowIcon = this.element.querySelector('.arrow-icon');
+        const dropdown_indicator = this.element.querySelector('.arrow-icon');
         const menu = this.element.querySelector('.dropdown-menu');
         const selectedIconElement = this.element.querySelector('.selected-icon');
         const iconContainer = this.element.querySelector('.icon-container');
@@ -69,17 +69,40 @@ export class Dropdown extends BaseComponent {
         //handle icon container click
         iconContainer.addEventListener('click', (e) => {
             e.stopPropagation();
+            
             // Only set active if it's currently inactive
             if (!this.isIconActive) {
                 this.setActiveState(true);
             }
+
+             // This ensures clicking the icon activates the tool functionality
+        const currentValue = this.element.querySelector('[data-value].active')?.dataset.value;
+        if (currentValue) {
+            // Simulate selecting the current item
+            this.onSelect({
+                value: currentValue,
+                icon: this.selectedIcon
+            });
+        } else {
+            // If no item is active, select the first one
+            const firstItem = this.element.querySelector('[data-value]');
+            if (firstItem) {
+                this.onSelect({
+                    value: firstItem.dataset.value,
+                    icon: firstItem.dataset.icon
+                });
+            }
+        }
         });
 
         // Only open dropdown when arrow icon is clicked 
-        arrowIcon.addEventListener('click', (e) => {
+        dropdown_indicator.addEventListener('click', (e) => {
             e.stopPropagation();
             this.isOpen = !this.isOpen;
             menu.classList.toggle('hidden');
+
+            //  set active state when clicking the elemnt from the dropdown
+            this.setActiveState(true);
         });
 
         this.element.querySelectorAll('[data-value]').forEach(item => {
@@ -92,7 +115,6 @@ export class Dropdown extends BaseComponent {
                     selectedIconElement.src = selectedIcon;
                     this.selectedIcon = selectedIcon;
                 }
-
                 this.onSelect({
                     value: selectedValue,
                     icon: selectedIcon, // Pass the selected icon to the onSelect callback
@@ -107,6 +129,7 @@ export class Dropdown extends BaseComponent {
         document.addEventListener('dropdown-activated', (e) => {
             if (e.detail.dropdownId !== this.id) {
                 this.setActiveState(false);
+
             }
         });
 
@@ -135,6 +158,7 @@ export class Dropdown extends BaseComponent {
                 bubbles: true,
                 detail: { dropdownId: this.id }
             });
+
             this.element.dispatchEvent(event);
         } else {
             iconContainer.classList.remove('bg-zinc-700');

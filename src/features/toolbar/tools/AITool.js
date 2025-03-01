@@ -5,6 +5,8 @@ export class AITool {
         this.isActive = false;
         this.canvasClickHandler = null;
         this.id = 'ai-tool';
+        this.buttonElement = null;
+
     }
 
     render() {
@@ -19,6 +21,9 @@ export class AITool {
         icon.className = 'w-5 h-5 ';
 
         AI_Tool.appendChild(icon);
+ 
+        this.buttonElement = AI_Tool
+
         // Listen for dropdown activation events
         document.addEventListener('dropdown-activated', (e) => {
             if (this.isActive) {
@@ -54,23 +59,34 @@ export class AITool {
         }
     }
 
-    activate(buttonElement){
+    activate(){
+        if (!this.buttonElement) {
+            console.error('Button element is not defined for TextTool.');
+            return;
+        }; // Ensure the button element exists
         this.isActive = true;
-        buttonElement.classList.add('bg-zinc-700');
+        this.buttonElement.classList.add('bg-zinc-700');
         this.enableAiTool();
     }
 
-    deactivate(buttonElement) {
+    deactivate() {
+        if (!this.buttonElement) {
+            console.error('Button element is not defined for TextTool.');
+            return;
+        }; 
+        // Ensure the button element exists
         this.isActive = false;
-        buttonElement.classList.remove('bg-zinc-700');
+        this.buttonElement.classList.remove('bg-zinc-700');
         this.disableAiTool();
     }
 
     enableAiTool(){
+        console.log("activate AITOOL")       
 
     }
 
     disableAiTool(){
+        console.log("deactivate AITOOL")       
         
     }
 }
