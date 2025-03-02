@@ -1,5 +1,8 @@
 import { Dropdown } from "./Dropdown.js";
 import { ExportImage } from "../../features/toolbar/tools/ExportImage.js";
+// import { shapeCircle } from "../../features/shapes/circle.js";
+import { shapeRect } from "../../features/shapes/rect.js";
+
 const c_icon = '../../../assets/shapes/circle.svg'
 const s_icon = '../../../assets/shapes/square.svg'
 const t_icon = '../../../assets/shapes/triangle.svg'
@@ -9,9 +12,8 @@ const camera_icon = '../../../assets/icons/camera.svg'
 
 const SHAPES = [
     { label: 'Square', value: 'square', icon: s_icon, shortcut: 'S' },
-    { label: 'Rectangle', value: 'rectangle', icon: r_icon, shortcut: 'R' },
+    { label: 'Rectangle', value: 'Rectangle', icon: r_icon, shortcut: 'R' },
     { label: 'Circle', value: 'circle', icon: c_icon, shortcut: 'C' },
-    { label: 'Square', value: 'square', icon: s_icon, shortcut: 'S' },
     { label: 'Triangle', value: 'triangle', icon: t_icon, shortcut: 'T' },
     { label: 'Arrow', value: 'arrow', icon: a_icon, shortcut: 'A' },
     { label: 'Export Image', value: 'Export Image', icon: camera_icon, shortcut: 'I' }
@@ -55,6 +57,8 @@ export class ShapeTools {
         };
 
         this.exportImage = null;
+        this.activeShapeTool = null;
+
         //create shape tools dropdown
         this.dropdown = new Dropdown({
             id: 'shape-tools',
@@ -78,7 +82,8 @@ export class ShapeTools {
         const icon = selected.icon;
 
         console.log('Tool selected:', tool); // Log the selected tool
-
+        // Deactivate any current tool first
+        this.deactivateCurrentTool();
         //update current tool
         this.currentShape = tool;
 
@@ -136,6 +141,21 @@ export class ShapeTools {
 
     }
 
+    deactivateCurrentTool() {
+        if (this.activeShapeTool) {
+            if (typeof this.activeShapeTool.removeEventListeners === 'function') {
+                this.activeShapeTool.removeEventListeners();
+            }
+            this.activeShapeTool = null;
+        }
+
+        // Reset the canvas cursor
+        const canvas = document.getElementById('main-canvas');
+        if (canvas) {
+            canvas.style.cursor = 'default';
+        }
+    }
+
     initializeCircleTool() {
         //
     }
@@ -153,18 +173,41 @@ export class ShapeTools {
     }
 
     initializeRectangleTool() {
-        //
+        console.log("initializeRectTool called");
+        // First, clean up any existing tool instances
+
+        this.deactivateCurrentTool();
+        // Get the canvas element 
+        const canvas = document.getElementById('main-canvas'); // Fixed ID
+
+        if (!canvas) {
+            console.error("Canvas element not found with ID 'main-canvas'");
+            return;
+        }
+
+        // Create new rectangle tool instance
+        this.activeShapeTool = new shapeRect(canvas);
+        console.log("Created new RectangleTool instance");
+
+        // Make sure the canvas cursor is appropriate
+        canvas.style.cursor = 'crosshair';
+
+        // Make sure any text selector is deactivated
+        // This ensures the TextSelector doesn't interfere with the Rectangle tool
+        if (window.moveToolsInstance && window.moveToolsInstance.textSelector) {
+            window.moveToolsInstance.deactivateTextSelection();
+        }
     }
 
     initializeCameraTool() {
         console.log('initializeCameraTool called'); // Debug log
-        
+
         // Create new instance if it doesn't exist
         if (!this.exportImage) {
             console.log('Creating new ExportImage instance'); // Debug log
             this.exportImage = new ExportImage();
         }
-        
+
         // Always call render
         console.log('Calling render on ExportImage'); // Debug log
         this.exportImage.render();

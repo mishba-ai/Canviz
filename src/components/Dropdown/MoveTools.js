@@ -1,5 +1,5 @@
 import { Dropdown } from "./Dropdown.js";
-import { TextSelector } from "../../features/toolbar/tools/Object_Text_selector.js";
+import { object_TextSelector } from "../../features/toolbar/tools/Object_Text_selector.js";
 import { CanvasManager } from "../../features/toolbar/tools/canvas/CanvasManager.js";
 const move_cursor = "../../../assets/icons/cursor_arr.svg";
 const hand_tool = "../../../assets/icons/handtool.svg";
@@ -48,6 +48,8 @@ export class MoveTools {
 
         // Set up keyboard shortcuts
         this.setupKeyboardShortcuts();
+        window.moveToolsInstance = this;
+
     }
 
 
@@ -57,6 +59,12 @@ export class MoveTools {
 
         // Cleanup previous tool before switching
         this.cleanupCurrentTool();
+
+        // Deactivate any active shape tools
+        if (window.shapeToolsInstance && window.shapeToolsInstance.deactivateCurrentTool) {
+            window.shapeToolsInstance.deactivateCurrentTool();
+        }
+
         // Update current tool
         this.currentTool = tool;
 
@@ -103,17 +111,17 @@ export class MoveTools {
         }
     }
 
-    
+
 
     initializeTextSelection() {
-        
-            // Create new TextSelector instance if not exists
-            if (!this.textSelector && document.querySelector('canvas')) {
-                const canvas = document.querySelector('canvas');
-                this.textSelector = new TextSelector(canvas);
-                 // Enable text selection events
+
+        // Create new TextSelector instance if not exists
+        if (!this.textSelector && document.querySelector('canvas')) {
+            const canvas = document.querySelector('canvas');
+            this.textSelector = new object_TextSelector(canvas);
+            // Enable text selection events
             canvas.style.cursor = 'crosshair';
-            }
+        }
 
     }
 
@@ -123,7 +131,7 @@ export class MoveTools {
             this.textSelector.cleanup(); // Assuming TextSelector has a cleanup method
             this.textSelector = null;
             const canvas = document.querySelector('canvas');
-            if(canvas){
+            if (canvas) {
                 canvas.style.cursor = 'default'
             }
         }
@@ -134,15 +142,15 @@ export class MoveTools {
 
         // Initialize hand tool functionality
         if (!this.canvasManager && document.querySelector('canvas')) {
-           
-                const canvas = document.querySelector('canvas');
-                this.canvasManager = new CanvasManager(canvas);
+
+            const canvas = document.querySelector('canvas');
+            this.canvasManager = new CanvasManager(canvas);
             this.canvasManager.enablePanning()
         }
 
     }
 
-    deactivatePanning(){
+    deactivatePanning() {
         if (this.canvasManager) {
             this.canvasManager.disablePanning();
             const canvas = document.querySelector('canvas');

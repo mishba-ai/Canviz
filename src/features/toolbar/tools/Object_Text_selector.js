@@ -1,13 +1,13 @@
-export class TextSelector {
+export class object_TextSelector {
     constructor(canvas) {
         this.canvas = canvas;
-        this.ctx = canvas.getContext('2d');
+        this.ctx = canvas.getContext('2d',{willReadFrequently:true});
         this.selectedText = null;
         this.isSelecting = false;
         this.startX = 0;
         this.startY = 0;
         this.contextMenu = null; 
-
+        this.active = false;
         this.setupEventListeners();
         this.createContextMenu(); 
 
