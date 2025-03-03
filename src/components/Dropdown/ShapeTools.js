@@ -1,6 +1,6 @@
 import { Dropdown } from "./Dropdown.js";
 import { ExportImage } from "../../features/toolbar/tools/ExportImage.js";
-// import { shapeCircle } from "../../features/shapes/circle.js";
+import { shapeCircle } from "../../features/shapes/circle.js";
 import { shapeRect } from "../../features/shapes/rect.js";
 
 const c_icon = '../../../assets/shapes/circle.svg'
@@ -157,7 +157,22 @@ export class ShapeTools {
     }
 
     initializeCircleTool() {
-        //
+        console.log('initializeCircleTool');
+        this.deactivateCurrentTool();
+        const canvas = document.getElementById('main-canvas'); // Fixed ID
+
+        if (!canvas) {
+            console.error("Canvas element not found with ID 'main-canvas'");
+            return;
+        }
+
+        // Create new rectangle tool instance
+        this.activeShapeTool = new shapeCircle(canvas);
+        console.log("Created new CircleTool instance");
+
+        canvas.style.cursor = 'crosshair';
+
+
     }
 
     initializeSquareTool() {

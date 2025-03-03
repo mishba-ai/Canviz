@@ -3,7 +3,8 @@ export class shapeRect {
     constructor(canvas) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d' , {willReadFrequently: true}); //willreadfrequently is used to improve performance
-        this.snapshot = null;
+        this.snapshot = null; //snapshot is used to save the canvas state before drawing preview
+        
         this.isDrawing = false;
         this.prevMouseX = 0;
         this.prevMouseY = 0;
@@ -33,7 +34,7 @@ export class shapeRect {
 
     startDrawing(e){
         this.isDrawing = true;
-        this.prevMouseX = e.offsetX; // what is offsetx?
+        this.prevMouseX = e.offsetX; 
         this.prevMouseY = e.offsetY;
 
          // Save the current canvas state for drawing preview
@@ -49,13 +50,8 @@ export class shapeRect {
          const width = e.offsetX - this.prevMouseX;
          const height = e.offsetY - this.prevMouseY;
 
-         // Check if fill is enabled
-        const fillEnabled = document.getElementById('fillColor')?.checked || false;
-
-        // Set drawing styles
-        this.ctx.strokeStyle = document.getElementById('strokeColor')?.value || '#ffffff';
-        this.ctx.fillStyle = document.getElementById('fillColor')?.value || '#ffffff';
-        this.ctx.lineWidth = parseInt(document.getElementById('strokeWidth')?.value || '2');
+        // Restore the canvas to its state before drawing preview
+          this.ctx.putImageData(this.snapshot, 0, 0);
 
         if (!fillEnabled) {
             // creating circle according to the mouse pointer
