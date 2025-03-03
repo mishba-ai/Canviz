@@ -2,6 +2,7 @@ import { Dropdown } from "./Dropdown.js";
 import { ExportImage } from "../../features/toolbar/tools/ExportImage.js";
 import { shapeCircle } from "../../features/shapes/circle.js";
 import { shapeRect } from "../../features/shapes/rect.js";
+import { shapeTriangle } from "../../features/shapes/triangle.js";
 
 const c_icon = '../../../assets/shapes/circle.svg'
 const s_icon = '../../../assets/shapes/square.svg'
@@ -180,7 +181,29 @@ export class ShapeTools {
     }
 
     initializeTriangleTool() {
-        //
+        console.log('initialize Triangle tool');
+
+        this.deactivateCurrentTool()
+        const canvas = document.getElementById('main-canvas'); // Fixed ID
+
+        if (!canvas) {
+            console.error("Canvas element not found with ID 'main-canvas'");
+            return;
+        }
+
+        // Create new triangle tool instance
+        this.activeShapeTool = new shapeTriangle(canvas);
+        console.log("Created new triangle tool instance");
+
+        canvas.style.cursor = 'crosshair';
+
+        // Make sure any text selector is deactivated
+        // This ensures the TextSelector doesn't interfere with the Rectangle tool
+        if (window.moveToolsInstance && window.moveToolsInstance.textSelector) {
+            window.moveToolsInstance.deactivateTextSelection();
+        }
+
+
     }
 
     initializeArrowTool() {
