@@ -1,4 +1,4 @@
-export class shapeRect {
+export class shapeSquare {
 
     constructor(canvas) {
         this.canvas = canvas;

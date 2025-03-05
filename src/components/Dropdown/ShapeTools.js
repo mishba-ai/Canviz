@@ -1,8 +1,9 @@
 import { Dropdown } from "./Dropdown.js";
 import { ExportImage } from "../../features/toolbar/tools/ExportImage.js";
 import { shapeCircle } from "../../features/shapes/circle.js";
-import { shapeRect } from "../../features/shapes/rect.js";
+import { shapeSquare } from "../../features/shapes/square.js";
 import { shapeTriangle } from "../../features/shapes/triangle.js";
+import { shapeArrow } from "../../features/shapes/arrow.js";
 
 const c_icon = '../../../assets/shapes/circle.svg'
 const s_icon = '../../../assets/shapes/square.svg'
@@ -12,8 +13,7 @@ const r_icon = '../../../assets/shapes/rectangle.svg'
 const camera_icon = '../../../assets/icons/camera.svg'
 
 const SHAPES = [
-    { label: 'Square', value: 'square', icon: s_icon, shortcut: 'S' },
-    { label: 'Rectangle', value: 'Rectangle', icon: r_icon, shortcut: 'R' },
+    { label: 'Square', value: 'Square', icon: s_icon, shortcut: 'S' },
     { label: 'Circle', value: 'circle', icon: c_icon, shortcut: 'C' },
     { label: 'Triangle', value: 'triangle', icon: t_icon, shortcut: 'T' },
     { label: 'Arrow', value: 'arrow', icon: a_icon, shortcut: 'A' },
@@ -44,11 +44,7 @@ export class ShapeTools {
                 label: 'Arrow',
                 action: this.handleSelectShape.bind(this),
             },
-            'Rectangle': {
-                icon: r_icon,
-                label: 'Rectangle',
-                action: this.handleSelectShape.bind(this),
-            },
+
             'Export Image': {
                 icon: camera_icon,
                 label: 'Export Image',
@@ -129,10 +125,7 @@ export class ShapeTools {
                 //
                 this.initializeArrowTool();
                 break;
-            case 'Rectangle':
-                //
-                this.initializeRectangleTool();
-                break;
+
             case 'Export Image':
                 console.log('Initializing Camera Tool in switch case'); // Debug log
 
@@ -177,7 +170,30 @@ export class ShapeTools {
     }
 
     initializeSquareTool() {
-        //
+        console.log("initializesquareTool called");
+        // First, clean up any existing tool instances
+
+        this.deactivateCurrentTool();
+        // Get the canvas element 
+        const canvas = document.getElementById('main-canvas'); // Fixed ID
+
+        if (!canvas) {
+            console.error("Canvas element not found with ID 'main-canvas'");
+            return;
+        }
+
+        // Create new rectangle tool instance
+        this.activeShapeTool = new shapeSquare(canvas);
+        console.log("Created new square tool instance");
+
+        // Make sure the canvas cursor is appropriate
+        canvas.style.cursor = 'crosshair';
+
+        // Make sure any text selector is deactivated
+        // This ensures the TextSelector doesn't interfere with the Rectangle tool
+        if (window.moveToolsInstance && window.moveToolsInstance.textSelector) {
+            window.moveToolsInstance.deactivateTextSelection();
+        }
     }
 
     initializeTriangleTool() {
@@ -207,15 +223,9 @@ export class ShapeTools {
     }
 
     initializeArrowTool() {
-        //
-    }
-
-    initializeRectangleTool() {
-        console.log("initializeRectTool called");
-        // First, clean up any existing tool instances
+        console.log("initialize arrow tool");
 
         this.deactivateCurrentTool();
-        // Get the canvas element 
         const canvas = document.getElementById('main-canvas'); // Fixed ID
 
         if (!canvas) {
@@ -223,11 +233,10 @@ export class ShapeTools {
             return;
         }
 
-        // Create new rectangle tool instance
-        this.activeShapeTool = new shapeRect(canvas);
-        console.log("Created new RectangleTool instance");
+        // Create new arrow tool instance
+        this.activeShapeTool = new shapeArrow(canvas);
+        console.log("Created new arrow tool instance");
 
-        // Make sure the canvas cursor is appropriate
         canvas.style.cursor = 'crosshair';
 
         // Make sure any text selector is deactivated
@@ -235,6 +244,8 @@ export class ShapeTools {
         if (window.moveToolsInstance && window.moveToolsInstance.textSelector) {
             window.moveToolsInstance.deactivateTextSelection();
         }
+
+
     }
 
     initializeCameraTool() {
@@ -272,10 +283,6 @@ export class ShapeTools {
                 case 'a':
                     //
                     this.handleToolSelection({ value: 'Arrow', icon: a_icon });
-                    break;
-                case 'r':
-                    //
-                    this.handleToolSelection({ value: 'Rectangle', icon: r_icon });
                     break;
                 case 'i':
                     this.handleToolSelection({ value: 'Export Image', icon: camera_icon });

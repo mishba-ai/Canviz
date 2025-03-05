@@ -1,7 +1,7 @@
 export class shapeTriangle {
   constructor(canvas) {
     this.canvas = canvas;
-    this.ctx = canvas.getContext('2d', { readFileFrequently: true });
+    this.ctx = canvas.getContext('2d', { willReadFrequently: true });
     this.snapshot = null;
     this.prevMouseX = 0;
     this.prevMouseY = 0;
@@ -62,7 +62,7 @@ export class shapeTriangle {
     fillEnabled ? this.ctx.fill() : this.ctx.stroke();
   }
 
-  stopDrawing(){
+  stopDrawing() {
     this.isDrawing = false;
   }
 
